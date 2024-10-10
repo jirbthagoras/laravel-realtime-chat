@@ -19,6 +19,11 @@ class ChatPage extends Component
 
     }
 
+    public function changeChat(string $chatId)
+    {
+        $this->chatId = $chatId;
+    }
+
     public function create()
     {
         Chat::query()
@@ -46,8 +51,6 @@ class ChatPage extends Component
         $this->user = Auth::user();
 
         $this->chats = $this->user->chats()->get();
-
-
 
         return view('livewire.chat-page', [
             "chats" => $this->chats
