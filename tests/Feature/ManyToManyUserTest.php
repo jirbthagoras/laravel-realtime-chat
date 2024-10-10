@@ -22,6 +22,9 @@ class ManyToManyUserTest extends TestCase
 
         self::assertNotNull($user);
 
+        Chat::query()
+            ->create([]);
+
         $chat = Chat::query()
             ->first();
 
@@ -31,5 +34,7 @@ class ManyToManyUserTest extends TestCase
                 "user_id" => $user->id,
                 "chat_id" => $chat->id,
             ]);
+
+        $user->chats()->attach($chat->id);
     }
 }
