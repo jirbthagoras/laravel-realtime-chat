@@ -11,17 +11,27 @@ class ChatPage extends Component
 {
     public $user;
     public $chats;
+    public $message;
 
     public $chatId;
+    public $selectedChat;
     public function mount()
     {
+        $this->user = Auth::user();
+
+        $this->chats = $this->user->chats()->get();
 
 
     }
 
+    public function sendMessage()
+    {
+        dd($this->message);
+    }
+
     public function changeChat(string $chatId)
     {
-        $this->chatId = $chatId;
+        $this->selectedChat = $chatId;
     }
 
     public function create()
@@ -47,10 +57,6 @@ class ChatPage extends Component
 
     public function render()
     {
-
-        $this->user = Auth::user();
-
-        $this->chats = $this->user->chats()->get();
 
         return view('livewire.chat-page', [
             "chats" => $this->chats

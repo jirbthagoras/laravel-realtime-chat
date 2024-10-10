@@ -38,6 +38,8 @@
                 <button wire:click.prevent="create" style="color: black" type="submit">Create</button>
             </label>
         </div>
+        <br>
+        <br>
         <div class="flex justify-between">
             <div>
                 @foreach($chats as $chat)
@@ -55,11 +57,12 @@
             </div>
             <h1></h1>
 
-            @if($chatId != null)
+            @if($selectedChat != null)
 
-            <div class="rounded bg-white w-1/4 items-center justify-center text-center" id="chat-container">
-                <h1 class="text-black">Welcome To The Chat</h1>
+            <div class="rounded bg-white w-2/4 items-center justify-center text-center" id="chat-container">
+                <h1 class="text-black">Welcome To The Chat current chat: {{$selectedChat}}</h1>
                 <hr>
+                    <input wire:keydown.enter="sendMessage" wire:model="message" type="text" placeholder="Input text" class="w-2/3 text-black">
             </div>
             @else
             <div>
