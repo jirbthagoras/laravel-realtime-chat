@@ -17,10 +17,8 @@ class ManyToManyUserTest extends TestCase
     public function test_example(): void
     {
         $user = \App\Models\User::query()
-            ->where("email", "=", "1@gmail.com")
+            ->where("email", "=", "hansjabriel@gmail.com")
         ->first();
-
-        self::assertNotNull($user);
 
         Chat::query()
             ->create([]);
@@ -35,6 +33,13 @@ class ManyToManyUserTest extends TestCase
                 "chat_id" => $chat->id,
             ]);
 
-        $user->chats()->attach($chat->id);
+//        $user->chats()->attach($chat->id);
+
+
+
+        foreach ($chat->users()->get() as $user) {
+            var_dump($user->name);
+        }
+
     }
 }
