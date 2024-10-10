@@ -16,7 +16,7 @@
             const messageElement = document.createElement('div');
             messageElement.classList.add('chat-message');
 
-            messageElement.innerHTML = `<strong>${data.username}:</strong> ${data.message}`;
+            messageElement.innerHTML = `<strong style="color:white">${data.username}: ${data.message}</strong> `;
 
             chatContainer.appendChild(messageElement);
         });
