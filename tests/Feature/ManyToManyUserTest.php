@@ -41,5 +41,11 @@ class ManyToManyUserTest extends TestCase
             var_dump($user->name);
         }
 
+        $messages = $chat->messages()->get();
+
+//        foreach ($messages as $item) {
+//            var_dump($item->message);
+//        }
+
     }
 }

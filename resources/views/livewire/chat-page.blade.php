@@ -57,13 +57,21 @@
             </div>
             <h1></h1>
 
-            @if($selectedChat != null)
+            @if($currentChat != null)
 
-            <div class="rounded bg-white w-2/4 items-center justify-center text-center" id="chat-container">
-                <h1 class="text-black">Welcome To The Chat current chat: {{$selectedChat}}</h1>
+            <div class="rounded bg-white w-2/4 items-center justify-center text-center">
+                <div id="chat-container">
+                <h1 class="text-black">Welcome To The Chat current chat: {{$currentChat->id}}</h1>
                 <hr>
                     <input wire:keydown.enter="sendMessage" wire:model="message" type="text" placeholder="Input text" class="w-2/3 text-black">
-            </div>
+                </div>
+                <div class="chat-container">
+                </div>
+                @foreach($messages as $message)
+                    <h1 class="text-black"><strong>{{$message->sender}}</strong>: {{$message->message}}</h1>
+                @endforeach
+                </div>
+
             @else
             <div>
                 Please Select A Chat To Start
