@@ -18,16 +18,9 @@ class ChatPage extends Component
 
     public $chatId;
     public $selectedChat;
-    public function mount()
-    {
-
-    }
 
     public function sendMessage()
     {
-
-        event(new \App\Events\MessageEvent("Hello World!", "Jirb", "Hello"));
-
         Message::query()
             ->create([
                 "message" => $this->message,
@@ -36,8 +29,7 @@ class ChatPage extends Component
                 "chat_id" => $this->currentChat->id
             ]);
 
-
-        event(new \App\Events\MessageEvent($this->message, $this->user->name, $this->currentChat->id));
+        $this->message = "";
     }
 
     public function changeChat(string $chatId)

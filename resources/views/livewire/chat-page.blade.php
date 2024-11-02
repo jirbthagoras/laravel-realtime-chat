@@ -59,11 +59,11 @@
 
             @if($currentChat != null)
 
-            <div class="rounded bg-white w-2/4 items-center justify-center text-center">
+            <div wire:poll class="rounded bg-white w-2/4 items-center justify-center text-center">
                 <div id="chat-container">
                 <h1 class="text-black">Welcome To The Chat current chat: {{$currentChat->id}}</h1>
                 <hr>
-                    <input wire:keydown.enter="sendMessage" wire:model="message" type="text" placeholder="Input text" class="w-2/3 text-black">
+                    <input wire:keydown.enter="sendMessage" wire:model="message" value={{$message}} type="text" placeholder="Input text" class="w-2/3 text-black">
                 </div>
                 <div class="chat-container">
                 </div>
